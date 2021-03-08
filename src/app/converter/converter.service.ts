@@ -18,7 +18,7 @@ export class ConverterService {
             const result: { data: { [x: string]: number} } = await axios.get(config.currConv.url, { params })
             console.log(result.data[params.q]);
             const converted = amount * result.data[params.q];
-            return { from, to, amount, converted };
+            return { from, to, amount, converted, date: new Date() };
         } catch (error) {
             this.logger.error(`[convertCurrencyError] CurrConv api response error`);
             throw new HttpException(

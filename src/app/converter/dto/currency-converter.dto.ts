@@ -11,4 +11,5 @@ export class CurrencyConverterDto {
   public amount: number;
 
   public converted?: number;
+  public date?: Date;
 }
