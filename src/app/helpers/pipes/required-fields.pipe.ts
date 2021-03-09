@@ -7,12 +7,13 @@ import {
   } from '@nestjs/common';
   import { ClassConstructor } from 'class-transformer/types/interfaces';
   import { plainToClass } from 'class-transformer';
-  import { AppLogger } from '../../../app.logger'
+  import { AppLogger } from '../../../app.logger';
   
   const get = require('lodash.get');
   
   @Injectable()
   export class RequiredFieldsPipe<T> implements PipeTransform<T>{
+    private readonly logger = new AppLogger(RequiredFieldsPipe.name);
     constructor(private readonly model: ClassConstructor<T>) {}
   
     async transform(data: T, metatype: ArgumentMetadata): Promise<T> {

@@ -15,10 +15,9 @@ export class ConverterService {
                 compact: 'ultra',
                 apiKey: config.currConv.apiKey
             }
-            const result: { data: { [x: string]: number} } = await axios.get(config.currConv.url, { params })
-            console.log(result.data[params.q]);
+            const result: { data: { [x: string]: number} } = await axios.get(config.currConv.url, { params });
             const converted = amount * result.data[params.q];
-            return { from, to, amount, converted, date: new Date() };
+            return { from, to, amount, converted, date: new Date(), conversion: result.data[params.q] };
         } catch (error) {
             this.logger.error(`[convertCurrencyError] CurrConv api response error`);
             throw new HttpException(
