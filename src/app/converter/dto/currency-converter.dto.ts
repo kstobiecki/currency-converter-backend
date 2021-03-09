@@ -1,13 +1,13 @@
-import {Expose} from 'class-transformer';
+import { IsNumber, IsNotEmpty } from 'class-validator';
 
 export class CurrencyConverterDto {
-  @Expose()
+  @IsNotEmpty()
   public from: string;
 
-  @Expose()
+  @IsNotEmpty()
   public to: string;
   
-  @Expose()
+  @IsNumber()
   public amount: number;
 
   public converted?: number;

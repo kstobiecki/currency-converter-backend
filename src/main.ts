@@ -4,6 +4,7 @@ import { json, urlencoded } from 'body-parser';
 import * as cors from 'cors';
 import * as helmet from 'helmet';
 import { config } from './config';
+import { ValidationPipe } from '@nestjs/common';
 const oxr = require('open-exchange-rates');
 const fx = require('money');
 
@@ -20,6 +21,7 @@ async function bootstrap() {
     allowedHeaders: ['Content-Type', 'Accept', 'Admin-authorization', 'Origin', 'User-agent',  'Authorization', 'Refer', 'x-axios-retry-count']
   };
   const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
   app.use(cors(corsOptions));
   app.use(json({limit: '10mb'}));
   app.use(urlencoded({limit: '10mb', extended: true}));
