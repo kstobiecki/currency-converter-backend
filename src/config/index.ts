@@ -2,9 +2,8 @@ interface Config {
     logger: {
         level: string;
     };
-    currConv: {
-        apiKey: string;
-        url: string;
+    exchangeRatesApi: {
+        appId: string;
     }
 }
 
@@ -12,8 +11,7 @@ export const config: Config = {
     logger: {
         level: process.env.APP_LOGGER_LEVEL
     },
-    currConv: {
-        apiKey: process.env.CURR_CONV_API_KEY,
-        url: process.env.CURR_CONV_URL
+    exchangeRatesApi: {
+        appId: process.env.EXCHANGE_RATES_API_APP_ID
     }
 }
