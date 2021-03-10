@@ -1,6 +1,6 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ConverterService } from './converter.service';
-import { CurrencyConverterDto } from './dto/currency-converter.dto';
+import { CurrencyConverterDto } from './dto';
 import { AppLogger } from '../../app.logger';
 
 @Controller('converter')

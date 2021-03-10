@@ -1,7 +1,5 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
-import axios from 'axios';
-import { CurrencyConverterDto } from './dto/currency-converter.dto';
-import { config } from '../../config/index';
+import { CurrencyConverterDto } from './dto';
 import { AppLogger } from '../../app.logger';
 const oxr = require('open-exchange-rates');
 const fx = require('money');
@@ -15,11 +13,11 @@ export class ConverterService {
     public async convertCurrency({from, to, amount}: CurrencyConverterDto): Promise<CurrencyConverterDto> {
         try {
             this.checkConversioRates();
-            const conversion = fx(1).from(from).to(to)
-            const converted = fx(amount).from(from).to(to);
+            const conversion = fx.convert(1, {from, to});
+            const converted = fx.convert(amount, {from, to});
             return { from, to, amount, converted, date: new Date(), conversion };
         } catch (error) {
-            this.logger.error(`[convertCurrencyError] Conversion error`);
+            this.logger.error(`[convertCurrencyError] Conversion error ${error}`);
             throw new HttpException(
                 {
                   error,
