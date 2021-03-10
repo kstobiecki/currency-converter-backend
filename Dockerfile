@@ -1,16 +1,14 @@
-FROM node:15.11.0-alpine3.13 As development
+FROM node:15.11.0-alpine3.13 As production
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install --only=development
+RUN npm install
 
 COPY . .
 
 RUN npm run build
-
-FROM node:15.11.0-alpine3.13 as production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}

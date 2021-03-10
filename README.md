@@ -22,9 +22,18 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Currency Converter Backend
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is the backend part of currency converter application built for educational purposes.
+
+## Running application in Docker Container
+
+```bash
+$ docker-compose up -d
+```
+
+Runs the app in the production mode.\
+Open [http://localhost:9000](http://localhost:9000) to see healthcheck.
 
 ## Installation
 
